@@ -3,8 +3,8 @@
 
 # Team
 
-- Arman Hossain Dipu
-- Azmayen Fayek Sabil
+- Tasfia Barshat
+- Azmayen Sabil
 - Abir Hossain
 
 
