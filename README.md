@@ -23,11 +23,11 @@
 Clone the project then run
 
 
-` cd medaid-connected/server`
+` cd server`
 
 in another cmd shell:
 
-` cd medaid-connected/client`
+` cd client`
 
 and in both shells type
 
