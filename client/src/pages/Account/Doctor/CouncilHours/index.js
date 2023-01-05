@@ -214,41 +214,6 @@ const CouncilHourUpdate = () => {
 
   return (
     <div>
-      <div>CouncilIDS {councilIDs.length}</div>
-      <div>CouncilHours {councilHours.length}</div>
-      {councilIDs.length > 0 ? updateRows() : null}
-      <div>Rows {rows.length}</div>
-      <TableContainer component={Paper} sx={{ marginBottom: 10 }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Day</TableCell>
-              <TableCell align="center">Start Time</TableCell>
-              <TableCell align="center">End Time</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.day}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.day}
-                </TableCell>
-                <TableCell align="center">{row.startTime}</TableCell>
-                <TableCell align="center">{row.endTime}</TableCell>
-                <TableCell align="center">
-                  <Button variant="outlined" color="error" onClick>
-                    {" "}
-                    Remove{" "}
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
       <div className="step">
         <div className="mb-4">
           <h6>Add Council hour</h6>
@@ -347,7 +312,9 @@ const CouncilHourUpdate = () => {
                 id="submit-btn"
                 className="btn shadow-none"
                 disabled={isLoading}
-                onClick={onSubmit}
+                onClick={() => {
+                  setTimeout(window.location.reload(), 2000);
+                }}
               >
                 {isLoading ? <span>Please Wait...</span> : <span>Add</span>}
               </button>
@@ -355,6 +322,41 @@ const CouncilHourUpdate = () => {
           </div>
         </form>
       </div>
+      <div>CouncilIDS {councilIDs.length}</div>
+      <div>CouncilHours {councilHours.length}</div>
+      {councilIDs.length > 0 ? updateRows() : null}
+      <div>Rows {rows.length}</div>
+      <TableContainer component={Paper} sx={{ marginBottom: 10 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Day</TableCell>
+              <TableCell align="center">Start Time</TableCell>
+              <TableCell align="center">End Time</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.day}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.day}
+                </TableCell>
+                <TableCell align="center">{row.startTime}</TableCell>
+                <TableCell align="center">{row.endTime}</TableCell>
+                <TableCell align="center">
+                  <Button variant="outlined" color="error" onClick>
+                    {" "}
+                    Remove{" "}
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
