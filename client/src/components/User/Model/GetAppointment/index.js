@@ -40,7 +40,8 @@ const GetAppointment = ({ hidemodal, doctor, schedule }) => {
       appointmentData.doctorId = doctor;
       appointmentData.patientId = patient._id;
 
-      // appointmentData.schedule.startTime = schedule.startTime;
+      appointmentData.startTime = schedule.startTime;
+      appointmentData.day = schedule.day;
 
       console.log("doctor id is " + schedule);
       var dayD = schedule.day.toString();
@@ -52,6 +53,7 @@ const GetAppointment = ({ hidemodal, doctor, schedule }) => {
       const response = await axios.post(
         `${apiURL}/patient/appointment/request`,
         appointmentData,
+
         header
       );
       console.log(response.status);
