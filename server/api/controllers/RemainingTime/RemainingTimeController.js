@@ -10,19 +10,27 @@ const getTime = async (req, res) => {
 
 
 const setTime = async (req, res) => {
-  //const errors = validationResult(req)
+  try {
+    const { time } = req.body;
 
-  // if (!errors.isEmpty()) {
-  //     return res.status(422).json({ errors: errors.array() })
-  // }
-  console.log(typeof req.body.symptoms);
+    const newRemainingTime = await time_schema.create({
+      time: time,
+    });
+    const createRemainingTime = await newRemainingTime.save();
 
-  const time = await time_schema.create({
-    time: req.body.time
-  });
+    console.log(req.body);
+    res.json(newRemainingTime);
 
-  console.log(req.body);
-  res.json(time);
+    if (createRemainingTime)
+      return res.status(201).json({
+        status: true,
+        message: "New remaining time have been added.",
+      });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
 };
 
 //
