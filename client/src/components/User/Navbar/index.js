@@ -13,6 +13,7 @@ function Index() {
   const [sidebar, setSidebar] = useState(false);
   //var isLoggedin = false
   const showSidebar = () => setSidebar(!sidebar);
+  const [loggedUser, setLoggedUser] = useState("");
 
   const [isShow, setShow] = useState(false);
   const [token, setToken] = useState(
@@ -23,6 +24,8 @@ function Index() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
+      const decode = jwt_decode(token);
+      setLoggedUser(decode.name);
     }
   }, []);
 
@@ -31,6 +34,9 @@ function Index() {
     const decode = jwt_decode(token);
     role = decode.role;
     const id = decode.id;
+    //console.log("name from token: ", decode.name)
+    //setLoggedUser(decode.name);
+
     localStorage.setItem("id", id);
 
     // if (role === "super_admin" || role === "admin" || role === "manager") {
@@ -98,8 +104,9 @@ function Index() {
               </li>
               {token ? (
                 <li>
-                  <NavLink activeClassName="is-Active" exact to="/login">
-                    profile
+                  <NavLink activeClassName="is-Active" className="profile" exact to="/login">
+                    {/* profile */}
+                    {loggedUser}
                   </NavLink>
                 </li>
               ) : (

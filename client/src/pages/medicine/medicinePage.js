@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { apiURL } from "../../utils/apiURL";
-import queryString from "query-string";
-import { useLocation } from "react-router";
+// import { apiURL } from "../../utils/apiURL";
+// import queryString from "query-string";
+// import { useLocation } from "react-router";
 import Select from "react-select";
 import "./style.scss";
 
@@ -15,11 +15,10 @@ const Index = () => {
   //use a variable to store the search query
   const [medicines, setMedicines] = useState([]);
   const [allMedicines, setAllmedicines] = useState([]);
-  const [q, setQ] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [message, setMessage] = useState("");
 
-  const location = useLocation();
+  // const location = useLocation();
   //const value = queryString.parse(location.search);
 
   useEffect(() => {
@@ -40,9 +39,9 @@ const Index = () => {
 
   //console.log(q);
 
-  const handleChange = e => {
-    setSearchInput(e.target.value)
- };
+  // const handleChange = e => {
+  //   setSearchInput(e.target.value)
+  // };
 
  const submitSearch = async (e) =>{
     e.preventDefault();

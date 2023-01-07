@@ -1,13 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import { useState } from "react";
+// import ReactDOM from "react-dom";
 import DatePicker from "react-datepicker";
 import CustomInput from "./CustomInput";
 import "react-datepicker/dist/react-datepicker.css";
 
 // import "./styles.css";
 
-const MyContext = React.createContext();
+// const MyContext = React.createContext();
 
 const DateInput = ({ handleValueChange }) => {
   // constructor({ props, handleValueChange }) {
@@ -25,7 +25,7 @@ const DateInput = ({ handleValueChange }) => {
   // this.handleValueChange = handleValueChange;
   // this.handleChange = this.handleChange.bind(this);
 
-  const startValue = null;
+  // const startValue = null;
   // const handleChange = (date) => {
   //   this.setState({
   //     startDate: date,

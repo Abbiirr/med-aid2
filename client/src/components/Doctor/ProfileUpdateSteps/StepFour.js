@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+// import { useEffect } from "react";
 import "./style.scss";
 import Icon from "react-icons-kit";
 import { ic_location_on } from "react-icons-kit/md";
-import axios from "axios";
-import { apiURL } from "../../../utils/apiURL";
+// import axios from "axios";
+// import { apiURL } from "../../../utils/apiURL";
 
 const StepFour = ({ responsestep, id }) => {
   const [isLoading, setLoading] = useState(false);
-  const [longitude, setLongitude] = useState(null);
-  const [latitude, setLatitude] = useState(null);
+  // const [longitude, setLongitude] = useState(null);
+  // const [latitude, setLatitude] = useState(null);
 
   // useEffect(() => {
   //   const geo = navigator.geolocation;

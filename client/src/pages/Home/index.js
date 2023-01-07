@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./style.scss";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
-import { apiURL } from "../../utils/apiURL";
+// import { apiURL } from "../../utils/apiURL";
 import { Images } from "../../utils/Images";
 //import { FaHeartbeat } from "@react-icons/all-files/fa/FaHeartbeat";
 
 
 import NavbarComponent from "../../components/User/Navbar/index";
 import SearchComponent from "../../components/User/Search/index";
-import DoctorListComponent from "../../components/User/DoctorsList/index";
+// import DoctorListComponent from "../../components/User/DoctorsList/index";
 import FooterComponent from "../../components/User/Footer/index";
 
 const Index = () => {
