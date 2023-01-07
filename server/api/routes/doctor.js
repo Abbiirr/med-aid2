@@ -20,7 +20,6 @@ router.post(
 );
 
 router.get("/getDoctors", DoctorController.getDoctors);
-router.get("/getDoctorsResult", DoctorController.getDoctorsResult);
 router.get("/reload", DoctorController.reloadSearch);
 
 router.get(
