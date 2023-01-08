@@ -16,9 +16,13 @@ const getCenter = async (req, res) => {
 
 const getSpecificCenter = async (req, res) => {
   searchedTest = req.query.testName;
+  var centersArray = searchedTest.split(",");
+  console.log(centersArray);
   const centers = await Center.find({
-    tests: { $elemMatch: { test_name: searchedTest } },
+    // tests: { $elemMatch: { test_name: searchedTest } },
     //test_name: { $in: searchedTest },
+    tests: { $elemMatch: { test_name: { $in: centersArray } } },
+    // test_name: { $in: centersArray },
   });
 
   res.json(centers);

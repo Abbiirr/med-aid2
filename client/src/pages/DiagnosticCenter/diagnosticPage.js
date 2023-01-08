@@ -18,7 +18,7 @@ const Index = () => {
   const [tests, setTests] = useState([]);
   const [allCenters, setAllCenters] = useState([]);
   const [q, setQ] = useState("");
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState([]);
   const [message, setMessage] = useState("");
   const [searchTest, setSearchTest] = useState("");
   const [searched, setSearched] = useState(false);
@@ -35,16 +35,6 @@ const Index = () => {
         );
         setCenters(response.data);
         setAllCenters(response.data);
-        //--------------getting the tests----------------
-        // let tempTests = new Set();
-        // allCenters.forEach((center) => {
-        //   center.tests.forEach((test) => {
-        //     tempTests.add(test.test_name);
-        //   });
-        // });
-        // setTests(tempTests);
-        // console.log("tests : ", tests);
-        //-----------------end of getting the tests----------------
       } catch (error) {
         if (error) console.log("error");
       }
@@ -54,49 +44,47 @@ const Index = () => {
 
   //console.log(q);
 
-  const handleChange = e => {
-    setSearchInput(e.target.value)
- };
-
  const submitSearch = async (e) =>{
     e.preventDefault();
+    console.log("diagnostic serach: ", searchInput)
+
+    let s = "";
+    for (let i = 0; i < searchInput.length; i++) {
+      s = s + searchInput[i].value.toString() + ",";
+    }
+    s = s.slice(0, -1);
+    console.log("diagnostic serach in string: ", s);
+
     //dispatch(fetchSearch(searchInput));
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/v1/diagnosticCenter/findCenter?testName=${searchInput}`
+        `http://localhost:4000/api/v1/diagnosticCenter/findCenter?testName=${s}`
       );
-      console.log("Test based center : ", response.data);
+      //console.log("Test based center : ", response.data);
 
       //---sorting based on searched test price
       let temp =response.data
-      temp.sort((a, b) => {
-        let testA = a.tests.find((test) => test.test_name === searchInput);
-        let testB = b.tests.find((test) => test.test_name === searchInput);
-        return testA.test_cost - testB.test_cost;
-      });
+      // temp.sort((a, b) => {
+      //   let testA = a.tests.find((test) => test.test_name === searchInput);
+      //   let testB = b.tests.find((test) => test.test_name === searchInput);
+      //   return testA.test_cost - testB.test_cost;
+      // });
       //---end of sorting based on searched test price
       setCenters(temp);
       setSearchTest(searchInput);
       setSearched(true);
-      console.log("test-price based center : ", temp)
+      //console.log("test-price based center : ", temp)
       //setCenters(response.data);
       setMessage("Search results for " + searchInput);
     } catch (error) {
       if (error) console.log("error");
     }
-    console.log(searchInput)
-    setSearchInput("");
+    //console.log(searchInput)
+    setSearchInput([]);
   }
 
   //let centerOptions = []
   let centerOptions2 = []
-
-  // allCenters.forEach( function (item){
-  //     centerOptions.push({
-  //         label: item.name,
-  //         value: item.name
-  //     })
-  // })
 
   allCenters.forEach( function (item){
     item.tests.forEach( function (test){
@@ -124,12 +112,12 @@ const Index = () => {
           </div>
           <div className="pa2">
               <Select
-                  onChange={(item) => setSearchInput(item.value)}
+                  onChange={(item) => setSearchInput(item)}
                   maxMenuHeight={175}
                   classNamePrefix="custom-select"
                   options={centerOptions3}
                   //options={symptoms}
-                  //isMulti
+                  isMulti
                   //isClearable={true}
                   isSearchable={true}
                   placeholder="Search Your tests"
@@ -155,7 +143,7 @@ const Index = () => {
         </div>
 
         {/* Results */}
-        <DiagnosticCenterListComponent centers={centers} loading={false} searched={searched} testName={searchTest}/>
+        <DiagnosticCenterListComponent centers={centers} loading={false} searched={searched}/>
       </div>
       <FooterComponent />
     </div>

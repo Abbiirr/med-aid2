@@ -3,7 +3,7 @@ import "./style.scss";
 import Skeleton from "react-loading-skeleton";
 import { Images } from "../../utils/Images";
 
-const Index = ({ centers, loading, searched, testName }) => {
+const Index = ({ centers, loading, searched}) => {
   const [staticArr] = useState([...Array(16).keys()]);
   const cardBody = createRef();
 
@@ -64,7 +64,7 @@ const Index = ({ centers, loading, searched, testName }) => {
                       <p className="text-capitalize">
                         Situated at : {center.location}
                       </p>
-                      {searched ? (
+                      {/* {searched ? (
                         <div>
                           <p>
                             <b>Test Name : {testName}</b>
@@ -73,7 +73,7 @@ const Index = ({ centers, loading, searched, testName }) => {
                             <b>Price : {center.tests[0].test_cost}</b>  
                           </p>
                         </div>
-                      ) : null}
+                      ) : null} */}
                     </div>
                   </div>
                 </div>
