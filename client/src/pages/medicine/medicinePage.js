@@ -67,9 +67,9 @@ const Index = () => {
 
   allMedicines.forEach( function (item){
       medicineOptions.push({
-          label: item.name,
-          value: item.name
-      })
+        label: item.name,
+        value: item.medicineType,
+      });
   })
 
 

@@ -7,18 +7,18 @@ const medicineSchema = mongoose.Schema({
   // variant: {
   //   type: String,
   // },
-  // medicineType: {
-  //   type: String,
-  // },
+  medicineType: {
+    type: String,
+  },
   price: {
     type: Number,
   },
   //multiple symptoms needed
-  alternative: [
-    {
-      type: String,
-    },
-  ],
+  // alternative: [
+  //   {
+  //     type: String,
+  //   },
+  // ],
   //symptom needs a different schema
   //symptoms: [String]
 });

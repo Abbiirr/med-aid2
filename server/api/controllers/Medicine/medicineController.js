@@ -14,15 +14,15 @@ const getMedicines = async (req, res) => {
 const getSpecificMedicine = async (req, res) => {
   searchedMedicine = req.query.medicineName;
   const medicines = await Medicine.find({
-    name: { $in: searchedMedicine}
+    medicineType: { $in: searchedMedicine },
   });
-
+  console.log(medicines);
   res.json(medicines);
 };
 
 const setMedicine = async (req, res) => {
   try {
-    const { name, price } = req.body;
+    const { name, medicineType, price } = req.body;
 
     const check = await Medicine.findOne({ name: name }).exec();
 
@@ -34,7 +34,9 @@ const setMedicine = async (req, res) => {
 
     const newMedicine = await Medicine.create({
       name: name,
+      medicineType: medicineType,
       price: price,
+
     });
     const createMedicine = await newMedicine.save();
 
